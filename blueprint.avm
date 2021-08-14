@@ -1,7 +1,7 @@
 # blend: a generalized macro script
 # roast: a specialized macro script
 
-[ Pre-chroot Blend ]
+[ Pre-chroot Blend ]{o}  
 • verify boot mode
 • networking
         • connect to internet
@@ -20,19 +20,19 @@
 
 # Then arch-chroot /mnt manually
 
-[ Locale Roast ]
+[ Locale Roast ]{o}  
 • uncommenting locale
 • localegen
 • time sync enable
 • timezone select
 
-[ Network Roast ]
+[ Network Roast ]{o}  
 • install networkmanager
 • set hostname
 • connect to network
 • setup DHCP
 
-[ Home Roast ]
+[ Home Roast ]{o}  
 • set root password
 • create user
 • set user password
@@ -42,7 +42,7 @@
 • run xdg-user-dirs-update for the user
 • create Scaffolding directory
 
-[ Boot Roast ]
+[ Boot Roast ]{o}  
 • install grub and efibootmgr
 • ask what to call the entry
 • grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=$ENTRY_NAME
@@ -51,18 +51,16 @@
 • install aforementioned microcode packages
 • grub-mkconfig -o /boot/grub/grub-cfg
 
-[ Terminal Blend ]
+[ Terminal Blend ]{o}  
 • install zsh
 • install omz
-• setup zsh prompt
 • install ranger
 • install vim
 • copy vim config/plugins over
 • install git
-• create git directory
 • install lynx
 
-[ Display Blend ]
+[ Display Blend ]{o}  
 • install lightdm and xorg
 • enable lightdm
 • setup xorg with lightdm
@@ -71,7 +69,7 @@
 • install lemonbar
 • setup basic lemonbar script
 
-[ Desktop Blend ]
+[ Desktop Blend ]{/}  
 • install dunst
 • copy dunst config over
 • install kitty
@@ -81,7 +79,7 @@
 • install falkon
 • install pulseaudio, pavucontrol, and pactl
 
-[ Bluetooth Roast ]
+[ Bluetooth Roast ]{ }  
 • install bluez, bluez-utils, blueman, and pulseaudio-bluetooth
 • enable bluetooth
 • vim /etc/pulse/system.pa # to add load-module module-bluetooth-policy and module-bluetooth-discover
