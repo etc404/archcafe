@@ -1,0 +1,89 @@
+# blend: a generalized macro script
+# roast: a specialized macro script
+
+[ Pre-chroot Blend ]
+• verify boot mode
+• networking
+        • connect to internet
+        • configure DHCP
+        • ping to test
+• update clock
+• partitioning
+        • ask which device to use
+        • ask whether to autopartition or not
+        • fdisk $DEVICE | autopartition
+        • format partitions
+        • mount partitions/swapon
+• pacstrap /mnt base linux linux-firmware
+• genfstab -U /mnt >> /mnt/etc/fstab
+• open fstab in vim to check
+
+# Then arch-chroot /mnt manually
+
+[ Locale Roast ]
+• uncommenting locale
+• localegen
+• time sync enable
+• timezone select
+
+[ Network Roast ]
+• install networkmanager
+• set hostname
+• connect to network
+• setup DHCP
+
+[ Home Roast ]
+• set root password
+• create user
+• set user password
+• install sudo
+• EDITOR=vim visudo # To add user to sudoers
+• install xdg-user-dirs
+• run xdg-user-dirs-update for the user
+• create Scaffolding directory
+
+[ Boot Roast ]
+• install grub and efibootmgr
+• ask what to call the entry
+• grub-install --target=x86_64-efi --efi-directory=/boot --bootloader-id=$ENTRY_NAME
+• grub-mkconfig -o /boot/grub/grub.cfg
+• ask which microcode to use
+• install aforementioned microcode packages
+• grub-mkconfig -o /boot/grub/grub-cfg
+
+[ Terminal Blend ]
+• install zsh
+• install omz
+• setup zsh prompt
+• install ranger
+• install vim
+• copy vim config/plugins over
+• install git
+• create git directory
+• install lynx
+
+[ Display Blend ]
+• install lightdm and xorg
+• enable lightdm
+• setup xorg with lightdm
+• install bspwm and sxhkd
+• copy basic bspwm and sxhkd configs
+• install lemonbar
+• setup basic lemonbar script
+
+[ Desktop Blend ]
+• install dunst
+• copy dunst config over
+• install kitty
+• copy kitty config over
+• install nitrogen
+• copy simple wallpapers over
+• install falkon
+• install pulseaudio, pavucontrol, and pactl
+
+[ Bluetooth Roast ]
+• install bluez, bluez-utils, blueman, and pulseaudio-bluetooth
+• enable bluetooth
+• vim /etc/pulse/system.pa # to add load-module module-bluetooth-policy and module-bluetooth-discover
+
+# then reboot
